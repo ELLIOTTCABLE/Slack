@@ -48,7 +48,7 @@ module Slack
         # TODO: Get rid of the "(…)" around the resulting string.
         # TODO: Implement multi–line source documenting.
         
-        Speck::Check.new(->(){ check[self] }, source)
+        Speck::Check.new(->{ check[self] }, source)
           .tap {|check| Speck.current.checks << check }
       end
     end
@@ -73,7 +73,7 @@ module Slack
         source = source.partition(".check_exception").first
         # TODO: Get rid of the "->{…}" around the resulting string.
         
-        Speck::Check.new(->(){
+        Speck::Check.new(->{
           begin
             self.call
           rescue exception

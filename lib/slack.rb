@@ -30,25 +30,17 @@ module Slack
       # of the line of Ruby that produced the receiver of this method.
       # --
       # TODO: Speck Object#check
-      # TODO: Remove the `->{self}` functionality, and implement Mixins::Truthy
-      #       for TrueClass/FalseClass/NilClass
       def check &check
         check = ->(_){self} unless block_given?
         
-        # TODO: Should we allow specks in the root environment? Could be useful
-        #       for quick checks…
         raise Exception::NoEnvironment unless Speck.current
         
-        # TODO: Implement documenting the `Check` using a preceding comment,
-        #       if present.
         # TODO: Move this into its own methods deeper in the library, and
         # clean it up.
         file, line, _ = Kernel::caller.first.split(':')
         source = File.open(file).readlines[line.to_i - 1]
         source.strip!
         source = source.partition(".check").first
-        # TODO: Get rid of the "(…)" around the resulting string.
-        # TODO: Implement multi–line source documenting.
         
         Speck::Check.new(->{ check[self] }, source)
           .tap {|check| Speck.current.checks << check }
@@ -65,15 +57,12 @@ module Slack
       # The passed exception object will be `rescue`d from within the block,
       # but any other exception raised by the block will not be caught.
       def check_exception exception = Exception
-        # TODO: Should we allow specks in the root environment? Could be useful
-        #       for quick checks…
         raise Exception::NoEnvironment unless Speck.current
         
         file, line, _ = Kernel::caller.first.split(':')
         source = File.open(file).readlines[line.to_i - 1]
         source.strip!
         source = source.partition(".check_exception").first
-        # TODO: Get rid of the "->{…}" around the resulting string.
         
         Speck::Check.new(->{
           begin

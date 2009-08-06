@@ -36,15 +36,18 @@ end
 # ===============
 begin
   require 'speck'
+  require 'slack'
+  require 'spark'
+  require 'spark/rake/speck_task'
   
   task :default => :'speck:run'
   task :speck => :'speck:run'
   namespace :speck do
-    load 'speck.rake'
+    Spark::Rake::SpeckTask.new
   end
   
 rescue LoadError
-  desc 'You need the `speck` gem to run specks'
+  desc 'You need the `speck`, `slack`, and `spark` gems to run specks'
   task :speck
 end
 

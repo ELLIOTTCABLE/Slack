@@ -1,3 +1,5 @@
+require 'speck'
+
 require 'slack/core_ext'
 require 'slack/check'
 

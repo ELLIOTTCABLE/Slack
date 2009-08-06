@@ -6,11 +6,11 @@ Gem::Specification.new do |s|
 
   s.required_rubygems_version = Gem::Requirement.new(">= 1.2") if s.respond_to? :required_rubygems_version=
   s.authors = ["elliottcable"]
-  s.date = %q{2009-08-04}
+  s.date = %q{2009-08-06}
   s.description = %q{Magic makes everybody's life a little easier, no?}
   s.email = ["Slack@elliottcable.com"]
-  s.extra_rdoc_files = ["lib/slack.rb", "README.markdown"]
-  s.files = ["lib/slack.rb", "Rakefile.rb", "README.markdown", ".manifest", "slack.gemspec"]
+  s.extra_rdoc_files = ["lib/slack/check.rb", "lib/slack/core_ext/object.rb", "lib/slack/core_ext/proc.rb", "lib/slack/core_ext.rb", "lib/slack.rb", "LICENSE.text", "README.markdown"]
+  s.files = ["lib/slack/check.rb", "lib/slack/core_ext/object.rb", "lib/slack/core_ext/proc.rb", "lib/slack/core_ext.rb", "lib/slack.rb", "LICENSE.text", "Rakefile.rb", "README.markdown", ".manifest", "slack.gemspec"]
   s.has_rdoc = true
   s.homepage = %q{http://github.com/elliottcable/Slack}
   s.rdoc_options = ["--line-numbers", "--inline-source", "--title", "Slack", "--main", "README.markdown"]

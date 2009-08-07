@@ -15,7 +15,7 @@ class Speck
     Speck.new Check.instance_method :! do
       ! ->{ (!Check.new(->{false})).execute }
         .check_exception Speck::Exception::CheckFailed
-      (!Check.new(->{false})).check {|c| c.execute.success? }
+      (!Check.new(->{false})).check {|c| c.execute.pass? }
     end
     
   end

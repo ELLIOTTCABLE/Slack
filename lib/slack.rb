@@ -1,7 +1,6 @@
 require 'speck'
 
-require 'slack/core_ext'
-require 'slack/check'
+require 'slack/mixins'
 
 ##
 # Methods in `Slack` are provided with the purpose of making it simpler (and

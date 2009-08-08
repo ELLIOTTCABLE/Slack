@@ -20,10 +20,10 @@ module Slack
         ::Speck::Check.new(source) {
           begin
             self.call
+            false
           rescue exception
-            return true
+            true
           end
-          return false
         } .tap {|check| ::Speck.current.checks << check }
       end
       

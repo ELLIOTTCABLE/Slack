@@ -1,6 +1,6 @@
 module Slack
   module Mixins
-    class Speck
+    module Speck
       
     end
   end

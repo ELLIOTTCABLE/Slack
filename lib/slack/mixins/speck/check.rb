@@ -1,7 +1,7 @@
 module Slack
   module Mixins
-    class Speck
-      class Check
+    module Speck
+      module Check
         
         ##
         # This method can “invert” a `Check` object, such that it treats success

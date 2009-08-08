@@ -8,4 +8,4 @@ require 'slack/mixins/speck'
 ::Speck.send :include, Slack::Mixins::Speck
 
 require 'slack/mixins/speck/check'
-::Speck::Check.send :include, Slack::Mixins::Speck::check
+::Speck::Check.send :include, Slack::Mixins::Speck::Check

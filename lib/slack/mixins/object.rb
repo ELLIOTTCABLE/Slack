@@ -21,9 +21,8 @@ module Slack
       # --
       # TODO: Speck Object#check
       def check &check
-        check = ->(_){self} unless block_given?
-        
         raise ::Speck::Exception::NoEnvironment unless ::Speck.current
+        raise LocalJumpError, 'no block given' unless block_given?
         
         # TODO: Move this into its own methods deeper in the library, and
         # clean it up.

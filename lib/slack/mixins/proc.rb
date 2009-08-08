@@ -10,14 +10,14 @@ module Slack
       # The passed exception object will be `rescue`d from within the block,
       # but any other exception raised by the block will not be caught.
       def check_exception exception = Exception
-        raise Exception::NoEnvironment unless Speck.current
+        raise ::Speck::Exception::NoEnvironment unless ::Speck.current
         
         file, line, _ = Kernel::caller.first.split(':')
         source = File.open(file).readlines[line.to_i - 1]
         source.strip!
         source = source.partition(".check_exception").first
         
-        Speck::Check.new(->{
+        ::Speck::Check.new(->{
           begin
             self.call
           rescue exception
@@ -25,7 +25,7 @@ module Slack
           end
           return false
         }, source)
-          .tap {|check| Speck.current.checks << check }
+          .tap {|check| ::Speck.current.checks << check }
       end
       
     end

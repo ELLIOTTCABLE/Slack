@@ -14,10 +14,10 @@ module Slack
           old_block, @block = @block, -> { !old_block.call }
           return self
         end
-        Speck.new Check.instance_method :! do
-          ! ->{ (!Check.new(->{false})).execute }
-            .check_exception Speck::Exception::CheckFailed
-          (!Check.new(->{false})).check {|c| c.execute.pass? }
+        ::Speck.new Check.instance_method :! do
+          ! ->{ (!::Speck::Check.new(->{false})).execute }
+            .check_exception ::Speck::Exception::CheckFailed
+          (!::Speck::Check.new(->{false})).check {|c| c.execute.pass? }
         end
         
       end

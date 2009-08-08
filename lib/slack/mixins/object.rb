@@ -23,7 +23,7 @@ module Slack
       def check &check
         check = ->(_){self} unless block_given?
         
-        raise Exception::NoEnvironment unless Speck.current
+        raise ::Speck::Exception::NoEnvironment unless ::Speck.current
         
         # TODO: Move this into its own methods deeper in the library, and
         # clean it up.
@@ -32,8 +32,8 @@ module Slack
         source.strip!
         source = source.partition(".check").first
         
-        Speck::Check.new(->{ check[self] }, source)
-          .tap {|check| Speck.current.checks << check }
+        ::Speck::Check.new(->{ check[self] }, source)
+          .tap {|check| ::Speck.current.checks << check }
       end
       
     end

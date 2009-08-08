@@ -29,9 +29,9 @@ module Slack
         file, line, _ = Kernel::caller.first.split(':')
         source = File.open(file).readlines[line.to_i - 1]
         source.strip!
-        source = source.partition(".check").first
+        source = source.partition(".check")
         
-        ::Speck::Check.new(source) { check[self] }
+        ::Speck::Check.new(source.first, source.last) { check[self] }
           .tap {|check| ::Speck.current.checks << check }
       end
       

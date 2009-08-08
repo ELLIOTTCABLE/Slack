@@ -17,15 +17,14 @@ module Slack
         source.strip!
         source = source.partition(".check_exception").first
         
-        ::Speck::Check.new(->{
+        ::Speck::Check.new(source) {
           begin
             self.call
           rescue exception
             return true
           end
           return false
-        }, source)
-          .tap {|check| ::Speck.current.checks << check }
+        } .tap {|check| ::Speck.current.checks << check }
       end
       
     end

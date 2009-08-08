@@ -15,9 +15,9 @@ module Slack
           return self
         end
         ::Speck.new Check.instance_method :! do
-          ! ->{ (!::Speck::Check.new(->{false})).execute }
+          ! ->{ (!::Speck::Check.new {false}).execute }
             .check_exception ::Speck::Exception::CheckFailed
-          (!::Speck::Check.new(->{false})).check {|c| c.execute.pass? }
+          (!::Speck::Check.new {false}).check {|c| c.execute.pass? }
         end
         
       end

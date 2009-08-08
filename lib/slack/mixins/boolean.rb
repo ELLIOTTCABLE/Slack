@@ -15,7 +15,7 @@ module Slack
           source.strip!
           source = source.partition(".check").first
           
-          ::Speck::Check.new(->{ self.nil? ? false : self }, source)
+          ::Speck::Check.new(source) { self.nil? ? false : self }
             .tap {|check| ::Speck.current.checks << check }
         end
       end

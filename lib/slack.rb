@@ -10,3 +10,10 @@ module Slack
   
   
 end
+
+class Speck
+  class Exception < StandardError
+    # Raised any time checks are defined by Slack methods outside of a `Speck`
+    NoEnvironment = Class.new self
+  end
+end

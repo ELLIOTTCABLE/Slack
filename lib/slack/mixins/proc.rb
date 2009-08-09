@@ -15,9 +15,9 @@ module Slack
         file, line, _ = Kernel::caller.first.split(':')
         source = File.open(file).readlines[line.to_i - 1]
         source.strip!
-        source = source.partition(".check_exception")
+        source = source.partition(".check_exception").first
         
-        ::Speck::Check.new(source.first, exception.to_s) {
+        ::Speck::Check.new(source) {
           begin
             self.call
             false

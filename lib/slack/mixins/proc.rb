@@ -12,12 +12,7 @@ module Slack
       def check_exception exception = Exception
         raise ::Speck::Exception::NoEnvironment unless ::Speck.current
         
-        file, line, _ = Kernel::caller.first.split(':')
-        source = File.open(file).readlines[line.to_i - 1]
-        source.strip!
-        source = source.partition(".check_exception").first
-        
-        ::Speck::Check.new(source) {
+        ::Speck::Check.new {
           begin
             self.call
             false

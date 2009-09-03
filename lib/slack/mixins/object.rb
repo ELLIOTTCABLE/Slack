@@ -15,23 +15,13 @@ module Slack
       # assigns its argument to the `thingie` attribute:
       #     
       #     MyClass.new(an_object).check {|my| my.thingie == an_object }
-      #     
-      # The new `Check` instance is automatically documented with the contents
-      # of the line of Ruby that produced the receiver of this method.
       # --
       # TODO: Speck Object#check
       def check &check
         raise ::Speck::Exception::NoEnvironment unless ::Speck.current
         raise LocalJumpError, 'no block given' unless block_given?
         
-        # TODO: Move this into its own methods deeper in the library, and
-        # clean it up.
-        file, line, _ = Kernel::caller.first.split(':')
-        source = File.open(file).readlines[line.to_i - 1]
-        source.strip!
-        source = source.partition(".check").first
-        
-        ::Speck::Check.new(source) { check[self] }
+        ::Speck::Check.new { check[self] }
           .tap {|check| ::Speck.current.checks << check }
       end
       

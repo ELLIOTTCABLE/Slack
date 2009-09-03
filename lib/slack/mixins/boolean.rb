@@ -8,14 +8,7 @@ module Slack
         else
           raise ::Speck::Exception::NoEnvironment unless ::Speck.current
           
-          # TODO: Move this into its own methods deeper in the library, and
-          # clean it up.
-          file, line, _ = Kernel::caller.first.split(':')
-          source = File.open(file).readlines[line.to_i - 1]
-          source.strip!
-          source = source.partition(".check").first
-          
-          ::Speck::Check.new(source) { self.nil? ? false : self }
+          ::Speck::Check.new { self.nil? ? false : self }
             .tap {|check| ::Speck.current.checks << check }
         end
       end

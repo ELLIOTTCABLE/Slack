@@ -5,9 +5,9 @@ module Slack
       ##
       # This method creates a new `Speck::Check` utilizing a passed block.
       # 
-      # It expects a block (returning `true` or `false`) to be passed. The
-      # block will be passed the receiver, so you can run comparators on it,
-      # or whatever else you like.
+      # It expects an expectation (returning `true` or `false`) to be passed.
+      # The block will be passed the receiver, so you can run comparators on
+      # it, or whatever else you like.
       # 
       # The intention is that this method be used to quickly check that
       # particular methods return values as expected. For instance, the

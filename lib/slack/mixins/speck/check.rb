@@ -11,7 +11,7 @@ module Slack
         # This simply wraps the existing block in a new block that calls and
         # inverts the return value.
         def !
-          old_block, @block = @block, -> { !old_block.call }
+          old_block, @expectation = @expectation, -> { !old_block.call }
           return self
         end
         ::Speck.new Check.instance_method :! do

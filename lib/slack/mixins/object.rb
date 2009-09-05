@@ -17,11 +17,11 @@ module Slack
       #     MyClass.new(an_object).check {|my| my.thingie == an_object }
       # --
       # TODO: Speck Object#check
-      def check &check
+      def check &block
         raise ::Speck::Exception::NoEnvironment unless ::Speck.current
         raise LocalJumpError, 'no block given' unless block_given?
         
-        ::Speck::Check.new { check[self] }
+        ::Speck::Check.new(self, &block)
           .tap {|check| ::Speck.current.checks << check }
       end
       

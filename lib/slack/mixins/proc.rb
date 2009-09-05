@@ -12,9 +12,9 @@ module Slack
       def check_exception exception = Exception
         raise ::Speck::Exception::NoEnvironment unless ::Speck.current
         
-        ::Speck::Check.new {
+        ::Speck::Check.new(->{self}) {|p|
           begin
-            self.call
+            p.call
             false
           rescue exception
             true

@@ -7,7 +7,6 @@ module Slack
           super
         else
           ::Speck::Check.new { self.nil? ? false : self }
-            .tap {|check| ::Speck.current.checks << check if ::Speck.current }
         end
       end
       

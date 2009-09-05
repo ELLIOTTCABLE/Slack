@@ -10,8 +10,6 @@ module Slack
       # The passed exception object will be `rescue`d from within the block,
       # but any other exception raised by the block will not be caught.
       def check_exception exception = Exception
-        raise ::Speck::Exception::NoEnvironment unless ::Speck.current
-        
         ::Speck::Check.new(->{self}) {|p|
           begin
             p.call
@@ -19,7 +17,7 @@ module Slack
           rescue exception
             true
           end
-        } .tap {|check| ::Speck.current.checks << check }
+        } .tap {|check| ::Speck.current.checks << check if ::Speck.current }
       end
       
     end

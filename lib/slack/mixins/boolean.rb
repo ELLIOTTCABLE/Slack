@@ -6,10 +6,8 @@ module Slack
         if block_given?
           super
         else
-          raise ::Speck::Exception::NoEnvironment unless ::Speck.current
-          
           ::Speck::Check.new { self.nil? ? false : self }
-            .tap {|check| ::Speck.current.checks << check }
+            .tap {|check| ::Speck.current.checks << check if ::Speck.current }
         end
       end
       

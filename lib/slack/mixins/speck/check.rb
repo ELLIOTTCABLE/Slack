@@ -19,7 +19,7 @@ module Slack
           }
           return self
         end
-        ::Speck.new Check.instance_method :! do
+        ::Speck.new Slack, Mixins, Mixins::Speck, Mixins::Speck::Check, Mixins::Speck::Check.instance_method(:!) do
           ! ->{ (!::Speck::Check.new {false}).execute }
             .check_exception ::Speck::Exception::CheckFailed
           (!::Speck::Check.new {false}).check {|c| c.execute.pass? }

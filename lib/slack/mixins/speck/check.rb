@@ -22,7 +22,7 @@ module Slack
         ::Speck.new Slack, Mixins, Mixins::Speck, Mixins::Speck::Check, Mixins::Speck::Check.instance_method(:!) do
           ! ->{ (!::Speck::Check.new {false}).execute }
             .check_exception ::Speck::Exception::CheckFailed
-          (!::Speck::Check.new {false}).check {|c| c.execute.pass? }
+          (!::Speck::Check.new {false}).check {|c| c.execute.passed? }
         end
         
       end

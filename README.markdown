@@ -1,9 +1,8 @@
 Slack
 =====
-Convenience magic for [Speck][] (<http://Speck.im/>).
+Convenience magic for [Speck][].
 
-Ideas, feature requests, and bugs can be reported on [Speck][]’s [GitHub][]
-issue tracker:
+Ideas, feature requests, and bugs can be reported on Speck’s [GitHub][] issue tracker:
 
 <http://github.com/elliottcable/Speck/issues>
 

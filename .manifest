@@ -1,9 +1,0 @@
-lib/slack/check.rb
-lib/slack/core_ext/object.rb
-lib/slack/core_ext/proc.rb
-lib/slack/core_ext.rb
-lib/slack.rb
-LICENSE.text
-Rakefile.rb
-README.markdown
-.manifest
